@@ -6,25 +6,23 @@
  * This file, project or its parts can not be copied and/or distributed without
  * the express permission of Juan Felipe Rada.
  *
- * @file index.js
+ * @file store.js
  * @author Juan Felipe Rada <radapls8@gmail.com>
  * @date Wednesday, 22nd February 2023
  */
 
 import Layout from "@/components/layout";
-import Link from "next/link";
 
-export default function Home()
+export default function Store()
 {
-  return (
-    <>
-      <Layout
-        title={'Home'}
-        description={'Art gallery for curious minds'}>
-        <h1>Hola</h1>
+    return (
+        <>
+            <Layout
+                title={'Store'}
+                description={'Virtual store- My Art Gallery'}>
+            </Layout>
 
-        <Link href='us'>Link</Link>
-      </Layout>
-    </>
-  )
+            <h1>Store</h1>
+        </>
+    )
 }

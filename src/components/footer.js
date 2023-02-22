@@ -11,9 +11,37 @@
  * @date Wednesday, 22nd February 2023
  */
 
+import Link from "next/link";
+import styles from "../styles/footer.module.css";
+
+
 export default function Footer()
 {
     return (
-        <div>footer</div>
+        <footer className={styles.footer}>
+            <div className={`container ${styles.content}`}>
+
+                <nav className={styles.nav} >
+                    <Link href="/" legacyBehavior>
+                        Home
+
+                    </Link>
+                    <Link href="/us" legacyBehavior>
+                        About us
+
+                    </Link>
+                    <Link href="/blog" legacyBehavior>
+                        Blog
+
+                    </Link>
+                    <Link href="/store" legacyBehavior>
+                        Store
+                    </Link>
+                </nav>
+
+                <p className={styles.copyright}>All rights Reserved {new Date().getFullYear()}</p>
+
+            </div>
+        </footer>
     )
 }

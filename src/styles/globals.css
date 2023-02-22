@@ -36,3 +36,26 @@ main {
   color: var(--primary);
   margin: 5rem 0;
 }
+
+.nav {
+  margin-top: 5rem;
+  display: flex;
+  gap: 2rem;
+}
+
+@media(min-width:768px){
+  .nav {
+      margin: 0;
+  }
+}
+
+.nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: .5rem;
+  transition: background-color;
+  transition-duration: 300ms;
+  border-radius: .5rem;
+}

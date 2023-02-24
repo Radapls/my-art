@@ -36,3 +36,18 @@ main {
   color: var(--primary);
   margin: 5rem 0;
 }
+
+.error, .link-error{
+font-size: 4.4rem;
+text-align: center;
+margin-top: 5rem;
+font-weight: 700;
+color: var(--secondary);
+}
+
+.link-error {
+  font-size: 1.8rem;
+display: block;
+text-decoration: none;
+color: var(--primary);
+}

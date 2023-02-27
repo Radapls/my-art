@@ -48,6 +48,11 @@ export default function Header()
                             Store
                         </a>
                     </Link>
+                    <Link href="/shopping-cart" legacyBehavior>
+                        <a className={router.pathname === '/shopping-cart' ? styles.active : ''}>
+                            <Image width={30} height={25} src="/img/carrito.png" alt="Shopping cart" />
+                        </a>
+                    </Link>
                 </nav>
 
             </div>

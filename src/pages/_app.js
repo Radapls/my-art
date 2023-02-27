@@ -11,13 +11,26 @@
  * @date Wednesday, 22nd February 2023
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import '../styles/globals.css';
 
 export default function App({ Component, pageProps })
 {
 
-  const [ cart, setCart ] = useState([])
+  const cartLS = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('cart')) ?? [] : []
+  const [ cart, setCart ] = useState(cartLS)
+  const [ renderPage, setRenderPage ] = useState(false)
+
+  useEffect(() =>
+  {
+    setRenderPage(true)
+
+  }, [])
+
+  useEffect(() =>
+  {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [ cart ])
 
   const addToCart = art =>
   {
@@ -49,7 +62,7 @@ export default function App({ Component, pageProps })
 
   const updateQuantity = art =>
   {
-    const newCart = art.map(artState =>
+    const newCart = cart.map(artState =>
     {
       if (artState.id === art.id)
       {
@@ -61,9 +74,10 @@ export default function App({ Component, pageProps })
     window.localStorage.setItem('cart', JSON.stringify(cart));
   }
 
-  return <Component {...pageProps}
+  return renderPage ? <Component {...pageProps}
     cart={cart}
     addToCart={addToCart}
     deleteProduct={deleteProduct}
-    updateQuantity={updateQuantity} />
+    updateQuantity={updateQuantity}
+  /> : null
 }

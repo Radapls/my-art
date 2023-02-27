@@ -24,7 +24,7 @@ export default function Header()
         <header className={styles.header}>
             <div className={`container ${styles.bar}`}>
                 <Link href="/" legacyBehavior>
-                    <Image src="/img/logo.png" width={300} height={300} alt='Logo' />
+                    <Image src="/img/logo.png" width={100} height={100} alt='Logo' />
                 </Link>
 
                 <nav className={styles.nav} >

@@ -13,11 +13,22 @@
 
 import Layout from "@/components/layout";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import styles from "../styles/cart.module.css";
 
 
-export default function ShoppingCart({ cart })
+export default function ShoppingCart({ cart, updateQuantity, deleteProduct })
 {
+    const [ total, setTotal ] = useState(0)
+
+    useEffect(() =>
+    {
+        const calculate = cart.reduce((total, product) => total + (product.quantity * product.price), 0)
+        setTotal(calculate)
+
+    }, [ cart ])
+
+
     return (
         <Layout
             title="Shopping Cart">
@@ -41,9 +52,34 @@ export default function ShoppingCart({ cart })
                                 </div>
                                 <div>
                                     <p className={styles.name}>{product.name}</p>
+
+                                    <div className={styles.quantity}>
+                                        <p>Quantity:</p>
+
+                                        <select
+                                            onChange={e => updateQuantity({
+                                                id: product.id,
+                                                quantity: e.target.value
+                                            })}
+                                            value={product.quantity}
+                                            className={styles.select}>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+
                                     <p className={styles.price}>$<span>{product.price}</span></p>
                                     <p className={styles.subtotal}>Subtotal: <span>{product.quantity * product.price}</span></p>
                                 </div>
+
+                                <button className={styles.delete}
+                                    type="button"
+                                    onClick={() => deleteProduct(product.id)}>
+                                    X
+                                </button>
 
                             </div>
                         ))
@@ -52,7 +88,7 @@ export default function ShoppingCart({ cart })
 
                 <aside className={styles.resume} >
                     <h3>Resume</h3>
-                    <p>Total value</p>
+                    <p>Total value: ${total}</p>
                 </aside>
             </div>
 
